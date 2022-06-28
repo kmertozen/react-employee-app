@@ -1,19 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    employees: { calisan: [] },
-    language: 'tr'
+    employee: {},
+    employees: {}
 }
 
 export const site = createSlice({
     name: 'site',
     initialState,
     reducers: {
+        setEmployee: (state, action) => {
+            state.employee = action.payload
+        },
         setEmployees: (state, action) => {
             state.employees = action.payload
+        },
+        setPuan: (state, action) => {
+            state.employees=action.payload
+            return {
+                ...state,
+                puan: 1,
+              }
         }
     },
 })
 
-export const { setEmployees } = site.actions
+export const { setEmployee,setEmployees,setPuan } = site.actions
 export default site.reducer

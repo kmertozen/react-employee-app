@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function Employeetbl() {
     const [employees, setEmployees] = useState({
-        calisan: []
-
+        calisanlar: []
     })
     useEffect(() => {
 
@@ -16,7 +15,7 @@ function Employeetbl() {
                     return res.json()
                 }
             })
-            .then(res => setEmployees(employees => ({ ...employees, calisan: res })))
+            .then(res => setEmployees(employees => ({ ...employees, calisanlar: res })))
             .catch(err => console.log(err))
     }, [])
 
@@ -25,7 +24,7 @@ function Employeetbl() {
         setEmployees(employees => ({
 
             ...employees,
-            calisan: employees.calisan.map((employee, i) => {
+            calisanlar: employees.calisanlar.map((employee, i) => {
                 if (key === i) {
                     employee["puan"]++
                 }
@@ -36,26 +35,22 @@ function Employeetbl() {
 
         setEmployees(employees => ({
             ...employees,
-            calisan: [...employees.calisan].sort((a, b) => b.puan - a.puan),
+            calisanlar: [...employees.calisanlar].sort((a, b) => b.puan - a.puan),
         }))
-
     }
 
-
-    const calisanlar = employees && employees.calisan.map((employee, key) =>
+    const calisanlar = employees && employees.calisanlar.map((employee, key) =>
     (
         <tr key={key}>
 
             <th scope="row"><img src={employee.resim} alt={employee.ad} style={{ objectFit: "cover", maxHeight: "150px", width: "150px" }} /></th>
-            <td style={{verticalAlign:"middle"}}>{employee.ad}</td>
-            <td style={{verticalAlign:"middle"}}>{employee.soyad}</td>
-            <td style={{verticalAlign:"middle"}}>{employee.gorev}</td>
-            <td style={{verticalAlign:"middle"}}>{employee.puan}</td>
-            <td style={{verticalAlign:"middle"}}><button className='btn btn-primary' onClick={() => puanla(key)} type='submit'>Oyla</button></td>
-            <td style={{verticalAlign:"middle"}}><Link to={"/EmployeePage/"+employee.id}><button className='btn btn-primary' onClick={() => puanla(key)} type='submit'>Görüntüle</button></Link></td>
+            <td style={{ verticalAlign: "middle" }}>{employee.ad}</td>
+            <td style={{ verticalAlign: "middle" }}>{employee.soyad}</td>
+            <td style={{ verticalAlign: "middle" }}>{employee.gorev}</td>
+            <td style={{ verticalAlign: "middle" }}>{employee.puan}</td>
+            <td style={{ verticalAlign: "middle" }}><button className='btn btn-primary' onClick={() => puanla(key)} type='submit'>Oyla</button></td>
+            <td style={{ verticalAlign: "middle" }}><Link to={"/EmployeePage/" + employee.id}><button className='btn btn-primary' onClick={() => puanla(key)} type='submit'>Görüntüle</button></Link></td>
         </tr>
-
-
     ));
 
     return (
