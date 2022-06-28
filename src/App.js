@@ -1,22 +1,16 @@
-import { Routes, Route } from "react-router-dom"
+import { useRoutes} from "react-router-dom"
 import Header from "./components/Header";
-import Employeetbl from "./pages/Employeetbl"
-import EmployeePage from "./pages/EmployeePage"
+import routes from "./routes"
+
+
 function App() {
 
 
 
   return (
     <div className="App">
-      
       <Header />
-      <Routes>
-      <Route path="/" element={<Employeetbl />} />
-        <Route path="Employeepage/:url" element={<EmployeePage />} />
-      </Routes>
-      
-      
-
+      {useRoutes(routes)}
 
     </div>
   );
