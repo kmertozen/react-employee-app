@@ -13,7 +13,7 @@ function Employeedesc() {
     console.log(employee)
     const { url } = useParams();
     useEffect(() => {
-        fetch(`https://alerjify.com/api/employee/${url}`)
+        fetch(`https://www.alerjify.com/api/employee/${url}`)
             .then(res => {
                 if (res.ok && res.status === 200) return res.json()
             })
