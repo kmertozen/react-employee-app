@@ -8,7 +8,7 @@ function Employeetbl() {
     useEffect(() => {
 
 
-        fetch('https://alerjify.com/api/employees')
+        fetch('https://www.alerjify.com/api/employees')
             .then(res => {
                 if (res.ok && res.status === 200) {
 

@@ -17,10 +17,7 @@ export const site = createSlice({
         },
         setPuan: (state, action) => {
             state.employees=action.payload
-            return {
-                ...state,
-                puan: 1,
-              }
+          
         }
     },
 })
